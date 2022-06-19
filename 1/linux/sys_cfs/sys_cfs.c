@@ -42,10 +42,6 @@ asmlinkage long sys_cfs(char * virtualRuntime, size_t virtualRuntimeSize)
 
     for_each_process_thread(task_list, p) {
         scheduled_task_list[counter] = p;
-    //    ptr += sprintf(ptr, "%d", p->pid);
-    //    ptr += sprintf(ptr, ":");
-    //    ptr += sprintf(ptr, "%d", p->se.vruntime);
-    //    ptr += sprintf(ptr, " ");
         counter++;
 
         if (counter > 20) {
@@ -55,8 +51,25 @@ asmlinkage long sys_cfs(char * virtualRuntime, size_t virtualRuntimeSize)
     
 fim:
     heapSort(scheduled_task_list, 20);
-	return pr_info("pid%d: %llu; \npid%d: %llu; \npid%d: %llu;\n",
+	return pr_info("pid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu; \npid%03d: %llu;\n --- \n",
         scheduled_task_list[0]->pid, scheduled_task_list[0]->se.vruntime,
         scheduled_task_list[1]->pid, scheduled_task_list[1]->se.vruntime,
-        scheduled_task_list[2]->pid, scheduled_task_list[2]->se.vruntime);
+        scheduled_task_list[2]->pid, scheduled_task_list[2]->se.vruntime,
+        scheduled_task_list[3]->pid, scheduled_task_list[3]->se.vruntime,
+        scheduled_task_list[4]->pid, scheduled_task_list[4]->se.vruntime,
+        scheduled_task_list[5]->pid, scheduled_task_list[5]->se.vruntime,
+        scheduled_task_list[6]->pid, scheduled_task_list[6]->se.vruntime,
+        scheduled_task_list[7]->pid, scheduled_task_list[7]->se.vruntime,
+        scheduled_task_list[8]->pid, scheduled_task_list[8]->se.vruntime,
+        scheduled_task_list[9]->pid, scheduled_task_list[9]->se.vruntime,
+        scheduled_task_list[10]->pid, scheduled_task_list[10]->se.vruntime,
+        scheduled_task_list[11]->pid, scheduled_task_list[11]->se.vruntime,
+        scheduled_task_list[12]->pid, scheduled_task_list[12]->se.vruntime,
+        scheduled_task_list[13]->pid, scheduled_task_list[13]->se.vruntime,
+        scheduled_task_list[14]->pid, scheduled_task_list[14]->se.vruntime,
+        scheduled_task_list[15]->pid, scheduled_task_list[15]->se.vruntime,
+        scheduled_task_list[16]->pid, scheduled_task_list[16]->se.vruntime,
+        scheduled_task_list[17]->pid, scheduled_task_list[17]->se.vruntime,
+        scheduled_task_list[18]->pid, scheduled_task_list[18]->se.vruntime,
+        scheduled_task_list[19]->pid, scheduled_task_list[19]->se.vruntime);
 }
