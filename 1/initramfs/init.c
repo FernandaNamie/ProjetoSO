@@ -23,7 +23,7 @@ int main(){
       }
    }
    for(;;)
-      cfs();
+      cfs(virtualRuntime, virtualRuntimeSize);
 
    return 0;
 }
