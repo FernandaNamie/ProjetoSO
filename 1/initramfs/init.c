@@ -1,36 +1,28 @@
 #include <stdio.h>
 #include "cfs.h"
 
-int main()
-{
+static const char * const programs[] = { "/simple_arithmetic", "/write_file" };
+
+int main(){
    char virtualRuntime[200];
    size_t virtualRuntimeSize = 200;
-   int aux = 0;
-   char c;
-   int x;
 
-   while (1) { 
-      // pidt_t pid = fork();
-
-      // if (pid == -1) {
-      //    perror("fork");
-		// 	return -1;
-      // } else if (pid) {
-      //    if (pid % 2 == 0) {
-      //       c = getc(stdin);
-      //    } else {
-      //       x = 2 + 5;
-      //    }
-      // }
-      
-      // if (aux % 5 == 0) {
-      //    cfs(virtualRuntime, virtualRuntimeSize);
-      // }
-
-      // aux++;
-
-      cfs(virtualRuntime, virtualRuntimeSize);
-      printf("%s", virtualRuntime);
+   for (int i = 0; i < len(programs); i++) {
+      const char *path = programs[i];
+      pid_t pid = fork();
+      if(pid == -1){
+         panic("fork");
+      } else if (pid) {
+         printf("Iniciando execução %s (PID = %d)\n", path, pid);
+         cfs(virtualRuntime, virtualRuntimeSize);
+      } else {
+         execl(path, path, (char *)NULL);
+         panic("execl");
+      }
    }
+   for(;;)
+      cfs();
+
    return 0;
 }
+
