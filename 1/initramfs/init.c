@@ -35,7 +35,7 @@ int main(){
          cfs(virtualRuntime, virtualRuntimeSize);
       } else {
          execl(path, path, (char *)NULL);
-         panic("execl");
+         break;
       }
    }
    for(;;)
