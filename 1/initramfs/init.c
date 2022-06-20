@@ -7,7 +7,9 @@ int main(){
    char virtualRuntime[300];
    size_t virtualRuntimeSize = 300;
 
-   for (int i = 0; i < len(programs); i++) {
+   const int len = sizeof programs / sizeof programs[0];
+
+   for (int i = 0; i < len; i++) {
       const char *path = programs[i];
       pid_t pid = fork();
       if(pid == -1){
