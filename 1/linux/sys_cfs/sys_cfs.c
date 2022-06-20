@@ -38,7 +38,7 @@ asmlinkage long sys_cfs(char * virtualRuntime, size_t virtualRuntimeSize)
     struct task_struct* p;
     struct task_struct* scheduled_task_list[20];
     char* ptr = virtualRuntime;
-    int counter = 0;
+    int counter = 0; 
 
     for_each_process_thread(task_list, p) {
         scheduled_task_list[counter] = p;
